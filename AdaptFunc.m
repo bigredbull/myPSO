@@ -21,5 +21,3 @@ y = sum(ebusen .* S,2);
 
 
 
-
-y = 
