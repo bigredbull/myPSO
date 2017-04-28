@@ -1,4 +1,4 @@
-function [ParSwarm, OptSwarm] = Init(SwarmSize, ParticleSize, ParticleScope, AdaptFunc)
+function [ParSwarm, OptSwarm] = Init(SwarmSize, ParticleSize, ParticleScope, adaptFunc)
 
 ParSwarm = rand(SwarmSize, 2 * ParticleSize + 1);
 
@@ -10,10 +10,11 @@ for k=1:ParticleSize
 end
 %适应度，对于每个粒子
 for k=1:SwarmSize
-    ParSwarm(k,2*ParticleSize+1)=AdaptFunc(ParSwarm(k,1:ParticleSize));
+    ParSwarm(k,2*ParticleSize+1)=adaptFunc(ParSwarm(k,1:ParticleSize));
 end
-
+disp('init wancheng')
 OptSwarm = zeros(SwarmSize + 1, ParticleSize);
 [~,row]=max(ParSwarm(:,2*ParticleSize+1));
 OptSwarm(1:SwarmSize,:) = ParSwarm(1:SwarmSize,1:ParticleSize);
 OptSwarm(SwarmSize+1,:)=ParSwarm(row,1:ParticleSize);
+disp('init opt wancheng')

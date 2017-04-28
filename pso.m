@@ -1,4 +1,4 @@
-function [XResult, YResult]=pso(SwarmSize, ParticleSize, ParticleScope, AdaptFunc, LoopCount)
+function [XResult, YResult]=pso(SwarmSize, ParticleSize, ParticleScope, adaptFunc, LoopCount)
 
 
 if nargin < 5
@@ -13,7 +13,9 @@ end
 
 
 [row,colum] = size(ParticleScope);
-if row ~= ParticleSize && colum ~= 2
+disp(row)
+disp(colum)
+if row ~= ParticleSize || colum ~= 2
     error('粒子范围错误')
 end
     
@@ -21,12 +23,13 @@ end
 %画图
 %DrawObjGraphic(ParticleSize,ParticleScope,AdaptFunc);
 
-[ParSwarm,OptSwarm] = Init(SwarmSize,ParticleSize,ParticleScope,AdaptFunc);
+[ParSwarm,OptSwarm] = Init(SwarmSize,ParticleSize,ParticleScope,adaptFunc);
 
 for k = 1:LoopCount
-    disp('第%g次迭代',k);
-    [ParSwarm,OptSwarm] = StepFindFunc(ParSwarm,OptSwarm,ParticleScope,AdaptFunc,LoopCount,k);
+    disp('迭代次数');
+    disp(k);
+    [ParSwarm,OptSwarm] = StepFindFunc(ParSwarm,OptSwarm,ParticleScope,adaptFunc,LoopCount,k);
 end
 
 XResult = OptSwarm(ParticleSize,:);
-YResult = AdaptFunc(XResult);
+YResult = adaptFunc(XResult);

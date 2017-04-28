@@ -1,4 +1,4 @@
-function [ParSwarm,OptSwarm] = StepFindFunc(ParSwarm,OptSwarm,ParticleScope,AdaptFunc,LoopCount,CurCount)
+function [ParSwarm,OptSwarm] = StepFindFunc(ParSwarm,OptSwarm,ParticleScope,adaptFunc,LoopCount,CurCount)
 
 
 %w
@@ -49,8 +49,8 @@ for row=1:ParRow
     ParSwarm(row,1:ParCol)=TempPos;
   
  %计算每个粒子的新的适应度值
-    ParSwarm(row,2*ParCol+1)=AdaptFunc(ParSwarm(row,1:ParCol));
-    if ParSwarm(row,2*ParCol+1) > AdaptFunc(OptSwarm(row,1:ParCol))
+    ParSwarm(row,2*ParCol+1)=adaptFunc(ParSwarm(row,1:ParCol));
+    if ParSwarm(row,2*ParCol+1) > adaptFunc(OptSwarm(row,1:ParCol))
         OptSwarm(row,1:ParCol) = ParSwarm(row,1:ParCol);
     end
 end

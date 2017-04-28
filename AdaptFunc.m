@@ -1,11 +1,21 @@
-function y = AdaptFunc(m1_input,P0_input)
-m1 = m1_input;
-P0 = P0_input;
+function y = AdaptFunc(input)
+
+global  P0
+global m2
+
+m2 = input(1,1);
+P0 = input(1,2);
+
 sim('Taijia_Model');
+
 a = jiaosudu.signals.values(1,1,:);
-target = 
-S = zero(1,150);
-for i = 1:150
+a = reshape(a,59,1);
+
+target = load('adapt_data.mat');
+target = target.a;
+
+S = zeros(59,1);
+for i = 1:59
     if a(i) == target(i)
         S(i) = 1;
     else
@@ -14,7 +24,8 @@ for i = 1:150
 end
 
 ebusen = a ./sum(a,2);
-y = sum(ebusen .* S,2);
+
+y = sum(ebusen .* S);
 
 
 
