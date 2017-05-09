@@ -13,4 +13,4 @@ global P0
 adaptFunc = @AdaptFunc;
 
 %PSO（粒子群数量（数字），粒子维度个数（数字），粒子各维度区间（矩阵），适应度函数，迭代次数（数字））
-[XResult, YResult] = pso(20, 2, [1,3;3e5,7e5], adaptFunc, 5);
+[XResult, YResult] = pso(20, 2, [1,3;3e5,7e5], adaptFunc, 2);

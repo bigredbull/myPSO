@@ -1,4 +1,4 @@
-function [ParSwarm,OptSwarm] = StepFindFunc(ParSwarm,OptSwarm,ParticleScope,adaptFunc,LoopCount,CurCount)
+function [ParSwarm,OptSwarm] = StepFindFunc(ParSwarm,OptSwarm,ParameterScope,adaptFunc,LoopCount,CurCount)
 
 
 %w
@@ -26,11 +26,11 @@ for row=1:ParRow
 
     %ÏÞËÙ
     for h=1:ParCol
-        if TempV(h)>ParticleScope(h,2)
-            TempV(h)=ParticleScope(h,2);
+        if TempV(h)>ParameterScope(h,2)
+            TempV(h)=ParameterScope(h,2);
         end
-        if TempV(:,h)<-ParticleScope(h,2)
-            TempV(:,h)=-ParticleScope(h,2)+1e-10;
+        if TempV(:,h)<-ParameterScope(h,2)
+            TempV(:,h)=-ParameterScope(h,2)+1e-10;
         end
     end
     
@@ -38,11 +38,11 @@ for row=1:ParRow
     TempPos=ParSwarm(row,1:ParCol)+a*TempV;
     
     for h=1:ParCol
-        if TempPos(:,h)>ParticleScope(h,2)
-            TempPos(:,h)=ParticleScope(h,2);
+        if TempPos(:,h)>ParameterScope(h,2)
+            TempPos(:,h)=ParameterScope(h,2);
         end
-        if TempPos(:,h)<=ParticleScope(h,1)
-            TempPos(:,h)=ParticleScope(h,1)+1e-10; 
+        if TempPos(:,h)<=ParameterScope(h,1)
+            TempPos(:,h)=ParameterScope(h,1)+1e-10; 
         end
     end
 
