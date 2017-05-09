@@ -20,8 +20,7 @@ if row ~= ParticleSize || colum ~= 2
 end
     
     
-%»­Í¼
-%DrawObjGraphic(ParticleSize,ParticleScope,AdaptFunc);
+
 
 [ParSwarm,OptSwarm] = Init(SwarmSize,ParticleSize,ParticleScope,adaptFunc);
 
