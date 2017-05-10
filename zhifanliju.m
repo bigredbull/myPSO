@@ -1,6 +1,7 @@
 function y = zhifanliju(Ang,P0)
 %Ang = u(1)
 %P0 = u(2)
+P = P0 * 1e5;
 l2=0.335;l3=0.580;
 %P0=5e5;
 S=78.54e-6;
@@ -12,5 +13,5 @@ l4=sqrt(l1*l1+l2*l2-2*l1*l2*cos(ang0));
 l5=sqrt(l1*l1+l2*l2-2*l1*l2*cos(ang0-Ang));
 deltaL=l4-l5;
 l=l1*l2*sin(ang0-Ang)/l5;
-TR=(P0*S*l*(V0/(V0-S*deltaL*1e-3))^n);
+TR=(P*S*l*(V0/(V0-S*deltaL*1e-3))^n);
 y=TR;

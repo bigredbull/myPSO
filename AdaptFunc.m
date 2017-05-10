@@ -30,7 +30,7 @@ abs_a = abs(a);
 ebusen = abs_a ./sum(abs_a,2);
 y_val = ebusen .* S;
 y = sum(y_val);
-disp(y)
+%disp(y)
 if isnan(y)
     error('适应度计算出现NaN');
 end
