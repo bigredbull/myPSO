@@ -18,8 +18,9 @@ for i = 1:59
 end
 disp(S);
 abs_a = abs(a);
-ebusen = abs_a ./sum(abs_a,2);
-
+disp(abs_a)
+ebusen = abs_a ./sum(abs_a);
+disp(ebusen)
 y_val = ebusen .* S;
 disp(y_val);
 y = sum(y_val);

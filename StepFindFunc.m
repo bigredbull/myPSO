@@ -44,7 +44,7 @@ for row=1:ParRow
             TempV(:,h) = -sudu(h);
         end
     end
-    disp(TempV);
+ %   disp(TempV);
     
     ParSwarm(row,ParCol+1:2*ParCol)=TempV;
     TempPos=ParSwarm(row,1:ParCol) +   TempV;
@@ -62,13 +62,13 @@ for row=1:ParRow
   
  %计算每个粒子的新的适应度值
     ParSwarm(row,2*ParCol+1)=adaptFunc(ParSwarm(row,1:ParCol));
-    if ParSwarm(row,2*ParCol+1) < OptSwarm(ParRow + 1,ParCol+1)
+    if ParSwarm(row,2*ParCol+1) > OptSwarm(ParRow + 1,ParCol+1)
         OptSwarm(ParRow + 1,1:ParCol) = ParSwarm(row,1:ParCol);
         OptSwarm(ParRow + 1,ParCol+1) = ParSwarm(row,2*ParCol+1);
     end
 end
-disp(ParSwarm);
-disp(OptSwarm);
+%disp(ParSwarm);
+%disp(OptSwarm);
 
 
 
