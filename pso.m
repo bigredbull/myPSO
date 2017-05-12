@@ -18,19 +18,23 @@ if row ~= ParameterSize || colum ~= 2
     error('粒子范围错误')
 end
     
-    
+y_plot = zeros(LoopCount+1);
 %ParSwarm 是粒子群的位置，速度，适应度矩阵，横轴为粒子x，纵轴1-size为位置，size-2size为速度，2size+1为适应度
 %OptSwarm
 disp('start')
 
 [ParSwarm,OptSwarm] = Init(SwarmSize,ParameterSize,ParameterScope,adaptFunc);
+y_plot(1) = OptSwarm(SwarmSize + 1, 2);
 if LoopCount ~= 0
     
     for k = 1:LoopCount
         disp('迭代次数');
         disp(k);
         [ParSwarm,OptSwarm] = StepFindFunc(ParSwarm,OptSwarm,ParameterScope,adaptFunc,LoopCount,k);
+        y_plot(k+1) =  OptSwarm(SwarmSize + 1, 2);
     end
 end
 XResult = OptSwarm(SwarmSize + 1, 1:ParameterSize);
 YResult = OptSwarm(SwarmSize + 1, ParameterSize + 1);
+plot(y_plot);
+axis([1 LoopCount+1 3 7]);
